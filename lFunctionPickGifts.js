@@ -22,4 +22,4 @@ var pickGifts = function(gifts, k) {
 //given an array of integers and the parameter k which is also an integer
 //return the sum of the array after removing the largest integer of the array and replacing it with the square root of it rounded down k times
 //console.log(pickGifts([25,64,9,4,100], 4), 29);
-//console.log(pickGifts([1,1,1,1], 4), 4)
+//console.log(pickGifts([1,1,1,1], 4), 4);
