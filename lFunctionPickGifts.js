@@ -16,7 +16,7 @@ var pickGifts = function(gifts, k) {
         }
         return el;
     });
-    return pickGifts(mapped,k-1)
+    return pickGifts(mapped,k-1);
 };
 
 //given an array of integers and the parameter k which is also an integer
