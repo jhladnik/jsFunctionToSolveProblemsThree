@@ -17,7 +17,7 @@ var frequencySort = function(nums) {
     });
 };
 
-//given an array of integer;
+//given an array of integer
 //return an array of integers with them sorted in non-decreasing, number of occurences in the given array; if there are multiple integers with the same amount of occurences, sort those integers in decreasing order/value
 //console.log(frequencySort([1,1,2,2,2,3]), [3,1,1,2,2,2]);
 //console.log(frequencySort([2,3,1,3,2]), [1,3,3,2,2]);
