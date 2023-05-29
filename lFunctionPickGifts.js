@@ -7,7 +7,7 @@
 
 var pickGifts = function(gifts, k) {
     //USE RECURSION
-    if(k===0){
+    if(k<1){
         return gifts.reduce((acc,c)=>acc+c,0);
     }
     let mapped = gifts.map(el=>{
