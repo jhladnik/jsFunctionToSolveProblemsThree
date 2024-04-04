@@ -9,23 +9,34 @@ var minSteps = function(s, t) {
     let arrOfS = s.split("");
     let arrOfT = t.split("");
 
-    // create a counter for the steps
-    let steps = 0;
+    // create a couple of hashmaps
+    let strSMap = new Map();
+    let strTMap = new Map();
 
-    // loop through arrOfT
-    for (let i=0; i<arrOfT.length; i++) {
-        // use a conditional to see if the string is in arrOfS, if it is splice
-        // it out
-        if (!arrOfS.includes(arrOfT[i])) {
-            steps++
-        } else {
-            arrOfS.splice(arrOfS.indexOf(arrOfT[i]), 1)
-        }
+    // loop through arrOfS and map the elements
+    for (let str of arrOfS) {
+        strSMap.set(str, (strSMap.get(str) || 0)+1);
     }
 
-    // return the difference of the two array lengths
-    return steps
+    // loop through arrOfT and map the elements
+    for (let strT of arrOfT) {
+        strTMap.set(strT, (strTMap.get(strT) || 0)+1)
+    }
 
+    // Initialize the minimum steps required
+    let steps = 0;
+
+    // Compare the maps
+    for (let [char, count] of strSMap) {
+        // If the character is also in strTMap, subtract its count in strTMap from its count in strSMap
+        // to find out how many characters need to be changed/added.
+        // If the character isn't in strTMap at all, then all occurrences of it in s need to be changed/added.
+        let countInT = strTMap.get(char) || 0;
+        if (count > countInT) {
+            steps += count - countInT;
+        }
+    }
+    return steps
 };
 
 // given two strings (s) and (t) of the same length; one letter in t can be replaced per step
