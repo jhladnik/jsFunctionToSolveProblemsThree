@@ -6,7 +6,27 @@
 // Given two integers left and right, return a list of all the self-dividing numbers in the range [left, right] (both inclusive).
 
 var selfDividingNumbers = function(left, right) {
-    // create an empty array (arr); loop from left to and including right; on each iteration, change the integer to a string, split it; check to see if the integer version of each string in that array is a 0, if so, move to the next number; else check to see if the original integer is divisible by the integer version of that string, if true, push to arr; return arr when the loop is complete
+    // create an empty array (arr); loop from left to and including right; change the integer to a string, split it; create another empty array (holder) on each iteration; loop through the new array of strings, check to see if the original integer is divisible by the integer version of that string, if true, push the string to holder; check to see if holder is the same length as our array of strings, if so, push to arr; return arr when the loop is complete
+    let arr = [];
+
+    for (let i=left; i<=right; i++) {
+        let strInt = i.toString().split("");
+
+        let holder = [];
+
+        for (let j=0; j<strInt.length; j++) {
+            let backToInt = parseInt(strInt[j]);
+            if (i % backToInt === 0){
+                holder.push(strInt[j])
+            }
+        }
+
+        if (holder.length===strInt.length) {
+            arr.push(i)
+        }
+    }
+
+    return arr
 };
 
 // Given two integers (left) and (right); given the definition of a self-dividing number is one that is divisible by every digit it contains except for 0
